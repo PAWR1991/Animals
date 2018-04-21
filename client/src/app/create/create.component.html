@@ -1,0 +1,37 @@
+<div class="container">
+	<h3>Know of a pet needing a home?</h3>
+</div>
+<div class="container">
+	<p *ngIf="pet.errors" class="alert-danger">{{pet.errors}}</p>
+	<form (submit)="create()" #CreateForm="ngForm">
+
+		<p *ngIf="!name.valid && !name.pristine" class="alert-danger">Need name and has to be 3 or more characters long</p>
+	<p>Name:<br>
+		<input 
+		type="text" name="pet.name" [(ngModel)]="pet.name" 
+		required 
+		minlength="3" maxlength="255"
+		#name="ngModel"></p>
+
+		<p *ngIf="!type.valid && !type.pristine" class="alert-danger">Need type of pet and has to be 3 or more characters long</p>
+	<p>Type:<br>
+		<input type="text" name="pet.type" [(ngModel)]="pet.type"
+		required 
+		minlength="3" maxlength="255"
+		#type="ngModel"></p>
+
+		<p *ngIf="!Desc.valid && !Desc.pristine" class="alert-danger">Need type of pet and has to be 3 or more characters long</p>
+	<p>Description:<br>
+		<input type="text" name="pet.desc" [(ngModel)]="pet.desc"
+		required 
+		minlength="3" maxlength="255"
+		#Desc="ngModel"></p>
+	<p>Skills:</p>
+	<p>Skill 1: <input type="text" name="pet.skill1" [(ngModel)]="pet.skill1"></p>
+	<p>Skill 2: <input type="text" name="pet.skill2" [(ngModel)]="pet.skill2"></p>
+	<p>Skill 3: <input type="text" name="pet.skill3" [(ngModel)]="pet.skill3"></p>
+
+	<input type="submit" class="btn btn-info" value="Add Pet" *ngIf="CreateForm.valid"> 
+	<a class="btn btn-info" role="button" [routerLink]="['']">Cancel</a>
+	</form>
+</div>
